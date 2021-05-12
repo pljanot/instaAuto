@@ -30,6 +30,9 @@ class MainPage:  # entry screen
     def __init__(self, browser):
         self.browser = browser
 
+    def DiscardSaveLoginInformation(self):
+        self.browser.find_element_by_xpath("//button[text()='Not Now']").click()
+
     def DiscardNotfication(self):
         self.browser.find_element_by_xpath("//button[text()='Not Now']").click()
 
@@ -48,6 +51,7 @@ loginPage = LoginPage(browser)
 loginPage.login(my_username, my_secret_password)
 
 mainPage = MainPage(browser)
+mainPage.DiscardSaveLoginInformation() # save login information discard
 mainPage.DiscardNotfication()
 
 sleep(5)
