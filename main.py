@@ -1,6 +1,7 @@
 from time import sleep
 
 import yaml
+from instapy import InstaPy
 from selenium import webdriver
 
 
@@ -44,15 +45,18 @@ with open(cfg, "r") as ymlfile:
 my_username = cfg['username']
 my_secret_password = cfg['password']
 
-browser = webdriver.Firefox()
-browser.implicitly_wait(10)
 
-loginPage = LoginPage(browser)
-loginPage.login(my_username, my_secret_password)
+InstaPy(username=my_username, password=my_secret_password).login()
 
-mainPage = MainPage(browser)
-mainPage.DiscardSaveLoginInformation() # save login information discard
-mainPage.DiscardNotfication()
+# browser = webdriver.Firefox()
+# browser.implicitly_wait(10)
+#
+# loginPage = LoginPage(browser)
+# loginPage.login(my_username, my_secret_password)
+#
+# mainPage = MainPage(browser)
+# mainPage.DiscardSaveLoginInformation() # save login information discard
+# mainPage.DiscardNotfication()
 
 sleep(5)
 
